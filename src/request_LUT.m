@@ -1,5 +1,6 @@
 % function to request data from the server
 function [out_data, out_std] = request_LUT(art_name, lat, lon, varargin)
+    % parse the input variables
     p = inputParser;
     p.addParameter('cyc', 0);
     p.addParameter('user', 'Anonymous');
@@ -13,19 +14,13 @@ function [out_data, out_std] = request_LUT(art_name, lat, lon, varargin)
     server = p.Results.server;
     port = p.Results.port;
 
-    % try to load the jsonstuff for octave
+    % try to load the json for octave
     try
         jsondecode('{"a": "b"}');
     catch
-        % if not working install and load
-        try
-            pkg load jsonstuff;
-        catch
-            disp("Install jsonstuff for Octave...");
-            pkg install "https://github.com/gnu-octave/pkg-json/archive/v1.5.0.tar.gz";
-            pkg load json;
-        end
+        pkg load json;
     end
+
     % define paths
     if ispc
         HOME = [getenv('HOMEDRIVE'),getenv('HOMEPATH')];
@@ -34,12 +29,14 @@ function [out_data, out_std] = request_LUT(art_name, lat, lon, varargin)
     end
     GM_DIR  = [HOME, '/GMCollections'];
     GM_TOML = [GM_DIR, '/Artifacts.toml'];
+
     % download the latest Artifacts.toml file from Github if the file does not exist
     if ~isfile(GM_TOML)
         update_GM();
     end
     GM_COLL = read_artifact_toml();
     GM_ARTS = fieldnames(GM_COLL);
+
     % define data and std ti return
     out_data = NaN;
     out_std = NaN;
@@ -53,6 +50,7 @@ function [out_data, out_std] = request_LUT(art_name, lat, lon, varargin)
         url = ['http://', server, ':', int2str(port), '/request.json?user=', user, '&artifact=', art_name, '&lat=', num2str(lat), '&lon=', num2str(lon), '&cyc=', int2str(cyc), '&interpolate=', int];
         response = urlread(url);
         json = jsondecode(response);
+
         % if the json has a key Result
         if isfield(json, 'Result')
             tmp_data = json.Result;

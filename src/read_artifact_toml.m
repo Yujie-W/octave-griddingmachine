@@ -8,13 +8,16 @@ function parsed_result = read_artifact_toml
     end
     GM_DIR  = [HOME, '/GMCollections'];
     GM_TOML = [GM_DIR, '/Artifacts.toml'];
+
     % download the latest Artifacts.toml file from Github if the file does not exist
     if ~isfile(GM_TOML)
         update_GM();
     end
+
     % read the file as string
     toml_str = fileread(GM_TOML);
     toml_lines = strsplit(toml_str, {'\n', '\r'});
+
     % parse the string (if not space) to a structure
     parsed_result = struct();
     art_key = '';
@@ -43,6 +46,8 @@ function parsed_result = read_artifact_toml
             art_url = [art_url tmp_url];
         end
     end
+
+    % add the last item to the struct
     if ~isempty(art_key)
         parsed_result.(art_key) = struct('git_tree_sha1', art_sha, 'urls', art_url);
     end
