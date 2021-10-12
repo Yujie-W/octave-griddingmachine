@@ -13,5 +13,7 @@ function update_GM
         mkdir([GM_DIR, '/archives']);
         mkdir([GM_DIR, '/artifacts']);
     end
+
+    % download the Artifacts.toml file
     urlwrite('https://raw.githubusercontent.com/CliMA/GriddingMachine.jl/main/Artifacts.toml', GM_TOML);
 end
