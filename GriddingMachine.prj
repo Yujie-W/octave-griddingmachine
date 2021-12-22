@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
-  <configuration build-checksum="2630538096" file="/home/wyujie/Github/Octave/octave-griddingmachine/GriddingMachine.prj" location="/home/wyujie/Github/Octave/octave-griddingmachine" name="GriddingMachine" target="target.toolbox" target-name="Package Toolbox">
+  <configuration build-checksum="3453114238" file="/home/wyujie/Github/Octave/octave-griddingmachine/GriddingMachine.prj" location="/home/wyujie/Github/Octave/octave-griddingmachine" name="GriddingMachine" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>GriddingMachine</param.appname>
     <param.authnamewatermark>Yujie Wang</param.authnamewatermark>
     <param.email>jesiner@gmail.com</param.email>
@@ -14,7 +14,25 @@
     <param.products.version />
     <param.platforms />
     <param.guid>fe28d690-a1a3-4843-bdce-b94f41fbb789</param.guid>
-    <param.exclude.filters />
+    <param.exclude.filters>% List files contained in your toolbox folder that you would like to exclude
+% from packaging.  Excludes should be listed relative to the toolbox folder.
+% Some examples of how to specify excludes are provided below:
+%
+% A single file in the toolbox folder:
+% .svn
+%
+% A single file in a subfolder of the toolbox folder:
+% example/.svn
+%
+% All files in a subfolder of the toolbox folder:
+% example/*
+%
+% All files of a certain name in all subfolders of the toolbox folder:
+% **/.svn
+%
+% All files matching a pattern in all subfolders of the toolbox folder:
+% **/*.bak
+%</param.exclude.filters>
     <param.exclude.pcodedmfiles>true</param.exclude.pcodedmfiles>
     <param.examples />
     <param.demosxml />
@@ -25,7 +43,11 @@
     <param.matlabpath.excludes />
     <param.javaclasspath.excludes />
     <param.exported.on.package>false</param.exported.on.package>
-    <param.required.addons />
+    <param.required.addons>
+      <requiredaddons>
+        <requiredAddOn downloadURL="" earliest="earliest" fromRepository="false" id="fe28d690-a1a3-4843-bdce-b94f41fbb789" include="false" latest="latest">GriddingMachine</requiredAddOn>
+      </requiredaddons>
+    </param.required.addons>
     <param.matlab.project.id />
     <param.matlab.project.name />
     <param.release.start>R2020b</param.release.start>
@@ -48,7 +70,6 @@
       <param.products.id />
       <param.products.version />
       <param.platforms />
-      <param.exclude.filters />
       <param.exclude.pcodedmfiles />
       <param.examples />
       <param.demosxml />
@@ -59,7 +80,6 @@
       <param.matlabpath.excludes />
       <param.javaclasspath.excludes />
       <param.exported.on.package />
-      <param.required.addons />
       <param.matlab.project.id />
       <param.matlab.project.name />
       <param.release.current.only />
