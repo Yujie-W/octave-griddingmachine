@@ -7,7 +7,7 @@ For Octave (tested on v6.2.0):
 ```matlab
 % To install
 pkg install "https://github.com/gnu-octave/pkg-json/archive/v1.5.0.tar.gz";
-pkg install "https://github.com/Yujie-W/octave-griddingmachine/archive/v0.1.0.tar.gz";
+pkg install "https://github.com/Yujie-W/octave-griddingmachine/archive/v0.1.1.tar.gz";
 % To uninstiall
 pkg uninstall json;
 pkg uninstall griddingmachine;

@@ -5,7 +5,7 @@ function [out_data, out_std] = request_LUT(art_name, lat, lon, varargin)
     p.addParameter('cyc', 0);
     p.addParameter('user', 'Anonymous');
     p.addParameter('interpolation', false);
-    p.addParameter('server', 'tofu.gps.caltech.edu');
+    p.addParameter('server', 'griddingmachine.myftp.org');
     p.addParameter('port', 5055);
     p.parse(varargin{:});
     cyc = p.Results.cyc;
